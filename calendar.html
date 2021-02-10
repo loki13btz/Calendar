@@ -32,7 +32,7 @@
         </div>
 
         <div class="p-3">
-            <table class="table">
+            <table class="table" id="calendar-table">
                 <thead class="table-dark">
                     <th style="width: 15%">Name</th>
                     <th style="width: 15%">Mon</th>
@@ -125,21 +125,21 @@
             <div class="modal-content">
                 <form id='myForm'>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Create event</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row mb-3">
                             <label for="eventName" class="col-sm-4 col-form-label">Name of the event</label>
                             <div class="col-5 p-1">
-                                <input type="text" class="form-control" name="eventName">
+                                <input type="text" class="form-control" name="eventName" required>
                             </div>
                         </div>
                         <div class='row mb-3'>
                             <label for='member' class="col-sm-4 col-form-label">Participants</label>
                             <div class="col-5 p-1">
-                                <select type='text' name="member" class="form-select">
-                                    <option selected value = 'allMembers' disabled>All members</option>
+                                <select type='text' name="member" class="form-select" required>
+                                    <option selected disabled>All members</option>
                                     <option value='Dasha'>Dasha</option>
                                     <option value='Ugen'>Ugen</option>
                                     <option value='Anna'>Anna</option>
@@ -150,8 +150,8 @@
                         <div class='row mb-3'>
                             <label for='day' class="col-sm-4 col-form-label">Day</label>
                             <div class="col-5 p-1">
-                                <select type='text' name="day" class="form-select">
-                                    <option selected value = 'day' disabled>Day</option>
+                                <select type='text' name="day" class="form-select" required>
+                                    <option selected disabled>Day</option>
                                     <option value='monday'>Monday</option>
                                     <option value='tuesday'>Tuesday</option>
                                     <option value='wednesday'>Wednesday</option>
@@ -163,8 +163,8 @@
                         <div class='row mb-3'>
                             <label for='time' class="col-sm-4 col-form-label">Time</label>
                             <div class="col-5 p-1">
-                                <select type='text' name="time" class="form-select">
-                                <option selected value = 'time' disabled>Time</option>
+                                <select type='text' name="time" class="form-select" required>
+                                <option selected disabled>Time</option>
                                 <option value='10:00'>10:00</option>
                                 <option value='11:00'>11:00</option>
                                 <option value='12:00'>12:00</option>

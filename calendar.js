@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
     let addEventForm = document.getElementById("myForm");
     let filter = document.getElementById("filter");
+    let calendarTable = document.getElementById("calendar-table")
     filter.addEventListener("change", (event) => {
         clearTable();
         showEvents(event.target.value);
     });
     addEventForm.addEventListener("submit", addEvent)
+    calendarTable.addEventListener("click", function(e) {
+        if (e.target && e.target.classList.contains('delete-event')) {
+            localStorage.removeItem(e.target.dataset.id);
+            clearTable();
+            showEvents();
+        }
+    })
     showEvents();
 });
 
@@ -18,15 +26,15 @@ const days = {
 };
 
 const times = {
-    "10:00": "2",
-    "11:00": "3",
-    "12:00": "4",
-    "13:00": "5",
-    "14:00": "6",
-    "15:00": "7",
-    "16:00": "8",
-    "17:00": "9",
-    "18:00": "10"
+    "10:00": "1",
+    "11:00": "2",
+    "12:00": "3",
+    "13:00": "4",
+    "14:00": "5",
+    "15:00": "6",
+    "16:00": "7",
+    "17:00": "8",
+    "18:00": "9"
 };
 
 function addEvent(e) {
@@ -34,16 +42,21 @@ function addEvent(e) {
     let formData = new FormData(e.target);
     let formDataObject = {};
     formData.forEach((value, key) => { formDataObject[key] = value });
-    localStorage.setItem(formDataObject.day + "_" + formDataObject.time, JSON.stringify(formDataObject));
+    if (!localStorage.getItem(formDataObject.day + "_" + formDataObject.time)) {
+        localStorage.setItem(formDataObject.day + "_" + formDataObject.time, JSON.stringify(formDataObject));
+        e.target.reset();
+    } else {
+        alert(`Wrong data`);
+    }
     showEvents();
 }
 
 function clearTable() {
-    events = document.querySelectorAll(".table-active");
-    if (events) {
-        events.forEach((event) => {
-            event.innerHTML = "";
-            event.className = "";
+    events_item = document.querySelectorAll(".table-active");
+    if (events_item) {
+        events_item.forEach((event_item) => {
+            event_item.innerHTML = "";
+            event_item.classList.remove("table-active");
         });
     }
 }
@@ -61,9 +74,12 @@ function showEvents(member = null) {
                     <div class="col-8">
                         ${event.eventName}
                     </div>
+                    <div class="col">
+                        <button type="button" class="btn-close delete-event" data-id="${localStorage.key(i)}" aria-label="Close"></button>
+                    </div>
                 </div>
                 `;
-                td.className = "table-active";
+                td.classList.add("table-active");
             }
         }
     }
