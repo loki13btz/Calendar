@@ -1,0 +1,26 @@
+table {
+    width: 90%;
+    height: 130;
+    text-indent: initial;
+    border-spacing: 2px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+#my-id {
+    background-color: aquamarine;
+}
+
+.color {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    float: right;
+    margin-right: 80px;
+    margin-bottom: 10px;
+}
